@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220">
+  <defs>
+    <linearGradient id="d" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fbf3dc"/><stop offset="1" stop-color="#e7d6a8"/></linearGradient>
+    <linearGradient id="b" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3ead2"/><stop offset="1" stop-color="#cdbb8a"/></linearGradient>
+    <radialGradient id="g" cx=".55" cy=".55" r=".6"><stop offset="0" stop-color="#4ade80" stop-opacity=".28"/><stop offset="1" stop-color="#4ade80" stop-opacity="0"/></radialGradient>
+  </defs>
+  <ellipse cx="240" cy="150" rx="210" ry="110" fill="url(#g)"/>
+  <!-- geometric rosette behind -->
+  <g fill="none" stroke="#d4a84b" stroke-opacity=".35" stroke-width="1.2" transform="translate(110 110)"><rect x="-46" y="-46" width="92" height="92"/><rect x="-46" y="-46" width="92" height="92" transform="rotate(45)"/><circle r="28"/></g>
+  <!-- minaret -->
+  <path d="M296 220V52h18v168z" fill="url(#b)"/><path d="M291 52l14-34 14 34z" fill="url(#d)"/><path d="M288 92h34v7h-34zM288 140h34v7h-34z" fill="#c9a24e"/>
+  <path d="M304 6h2v12h-2z" fill="#d4a84b"/>
+  <!-- main dome -->
+  <path d="M160 220v-70h130v70z" fill="url(#b)"/>
+  <path d="M168 152c0-44 26-70 57-80 31 10 57 36 57 80z" fill="url(#d)"/>
+  <path d="M224 50h2v24h-2z" fill="#d4a84b"/>
+  <path d="M231 30a10 10 0 1 0 6 18 8 8 0 1 1-6-18z" fill="#e7b84a"/>
+  <!-- side domes -->
+  <path d="M120 220v-44h52v44zM124 178c0-18 10-28 22-32 12 4 22 14 22 32z" fill="url(#d)"/>
+  <path d="M330 220v-48h56v48zM334 174c0-20 11-30 24-34 13 4 24 14 24 34z" fill="url(#d)"/>
+  <path d="M392 220v-88h10v88zM389 132l8-20 8 20z" fill="url(#b)"/>
+  <!-- arches -->
+  <g fill="#0d4229" opacity=".55"><path d="M188 220v-34a8 8 0 0 1 16 0v34zM217 220v-40a8 8 0 0 1 16 0v40zM246 220v-34a8 8 0 0 1 16 0v34zM140 220v-24a6 6 0 0 1 12 0v24zM350 220v-26a7 7 0 0 1 14 0v26z"/></g>
+  <path d="M0 214c120-14 260-14 420 0v6H0z" fill="#4ade80" opacity=".18"/>
+</svg>

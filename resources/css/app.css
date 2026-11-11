@@ -1,0 +1,133 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source '../../app/**/*.php';
+@source '../../config/navigation.php';
+
+@theme {
+    --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-urdu: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', serif;
+
+    /* Brand: green / black / white */
+    --color-brand-50: #f0fdf4;
+    --color-brand-100: #dcfce7;
+    --color-brand-200: #bbf7d0;
+    --color-brand-300: #86efac;
+    --color-brand-400: #4ade80;
+    --color-brand-500: #22c55e;
+    --color-brand-600: #16a34a;
+    --color-brand-700: #15803d;
+    --color-brand-800: #166534;
+    --color-brand-900: #14532d;
+    --color-brand-950: #052e16;
+    --color-ink: #0a0a0a;
+
+    /* Redesign (docs/ui-redesign-inventory.md): deep "shell" greens for sidebars/top bars, mint page wash. */
+    --color-shell-950: #052414;
+    --color-shell-900: #0a331f;
+    --color-shell-800: #0d4229;
+    --color-shell-700: #125635;
+    --color-mint: #f3f8f4;
+}
+
+@layer base {
+    html { -webkit-font-smoothing: antialiased; scrollbar-gutter: stable; }
+    body { background: linear-gradient(180deg, #f5faf6 0%, #eef7f1 100%) fixed; @apply text-neutral-900; }
+    /* Line-art Islamic ornaments at the page edges only (refs: docs/ui-references/*.png), never behind content. */
+    body.ornament::before {
+        content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+        background: url('/images/ui/ornament-edge.svg') right -40px top 40px / 230px auto no-repeat,
+                    url('/images/ui/ornament-corner.svg') left -30px top 70px / 210px auto no-repeat;
+    }
+    [dir="rtl"] body.ornament::before { transform: scaleX(-1); }
+    [dir="rtl"] body, .font-urdu { font-family: var(--font-urdu); line-height: 2; }
+    [x-cloak] { display: none !important; }
+    /* Grid items default to min-width:auto, so a card holding a wide (scrollable) table would stretch its track past
+       the viewport. Zero-specificity so any explicit min-w-* utility still wins. */
+    :where(.grid) > * { min-width: 0; }
+    .tabular { font-variant-numeric: tabular-nums; }
+    /* Urdu (RTL): keep amounts, references and codes as isolated left-to-right runs so digits and periods stay in place. */
+    [dir="rtl"] .tabular, [dir="rtl"] bdi, [dir="rtl"] .font-mono { direction: ltr; unicode-bidi: isolate; display: inline-block; }
+}
+
+@utility field-label {
+    @apply block text-sm font-medium text-neutral-800 mb-1;
+}
+@utility field-input {
+    @apply block w-full rounded-lg border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 shadow-xs placeholder:text-neutral-400 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 focus:outline-none disabled:bg-neutral-100 disabled:text-neutral-500;
+}
+@utility field-error {
+    @apply mt-1 text-xs text-red-600;
+}
+@utility field-hint {
+    @apply mt-1 text-xs text-neutral-500;
+}
+@utility btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 text-sm font-semibold transition focus:outline-none focus:ring-2 focus:ring-offset-1 disabled:opacity-50 disabled:cursor-not-allowed whitespace-nowrap;
+}
+@utility btn-primary {
+    @apply btn bg-brand-700 text-white hover:bg-brand-800 focus:ring-brand-600;
+}
+@utility btn-secondary {
+    @apply btn bg-white text-neutral-900 border border-neutral-300 hover:bg-neutral-50 focus:ring-neutral-400;
+}
+@utility btn-dark {
+    @apply btn bg-shell-900 text-white hover:bg-shell-800 focus:ring-brand-600;
+}
+@utility btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+}
+@utility btn-ghost {
+    @apply btn text-neutral-700 hover:bg-neutral-100;
+}
+@utility btn-sm {
+    @apply px-3 py-1.5 text-xs;
+}
+@utility card {
+    @apply rounded-xl border border-neutral-200/80 bg-white shadow-[0_1px_2px_rgba(16,24,40,0.04),0_2px_6px_rgba(16,24,40,0.04)];
+}
+/* Dark green chrome (ops/platform sidebar, top bars, customer header). */
+@utility bg-shell {
+    background-image: linear-gradient(180deg, #0c2f1f 0%, #082317 50%, #04140c 100%);
+}
+@utility bg-shell-bar {
+    background-image: url('/images/ui/pattern-light.svg'), linear-gradient(90deg, #072316 0%, var(--color-shell-900) 45%, #155c35 100%);
+    background-size: 96px 96px, auto;
+}
+/* Mosque silhouette ornament, coloured via background-color through an SVG mask. */
+@utility mosque {
+    mask: url('/images/ui/mosque.svg') no-repeat bottom left / contain;
+    -webkit-mask: url('/images/ui/mosque.svg') no-repeat bottom left / contain;
+}
+@utility nav-section {
+    @apply mb-1 mt-5 px-3 text-[11px] font-semibold uppercase tracking-wider text-white/55;
+}
+@utility nav-item {
+    @apply flex items-center gap-3 rounded-lg px-3 py-2 text-[13.5px] text-white/85 transition hover:bg-white/8 hover:text-white;
+}
+@utility nav-item-active {
+    @apply bg-brand-600 font-medium text-white shadow-sm hover:bg-brand-600;
+}
+@utility link {
+    @apply font-medium text-brand-700 hover:text-brand-900 hover:underline;
+}
+
+@layer components {
+    .table-base { min-width: 100%; font-size: 0.875rem; border-collapse: collapse; }
+    .table-base thead th { @apply bg-neutral-50/80 px-3.5 py-3 text-start text-[11px] font-semibold uppercase tracking-wider text-neutral-500 whitespace-nowrap border-b border-neutral-200; }
+    /* Cells stay on one line like the references; the x-table wrapper scrolls horizontally when space runs out.
+       Long free-text cells opt back in with `whitespace-normal`. */
+    .table-base tbody td { @apply px-3.5 py-3 align-middle text-neutral-800 whitespace-nowrap; }
+    .table-base tbody td:first-child, .table-base thead th:first-child { @apply ps-5; }
+    /* Compact variant for dashboard summary tables (x-table dense). */
+    .table-dense thead th { @apply px-2 py-2 text-[10.5px]; }
+    .table-dense tbody td { @apply px-2 py-1.5 text-[13px]; }
+    .table-dense tbody td:first-child, .table-dense thead th:first-child { @apply ps-5; }
+    .table-dense tbody td:last-child, .table-dense thead th:last-child { @apply pe-5; }
+    .table-dense tbody { @apply divide-neutral-100/70; }
+    .table-base tbody td:last-child, .table-base thead th:last-child { @apply pe-5; }
+    .table-base tbody tr:hover { background-color: color-mix(in oklab, var(--color-brand-50) 50%, transparent); }
+}

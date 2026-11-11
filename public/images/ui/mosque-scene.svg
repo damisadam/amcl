@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 440">
+  <defs>
+    <linearGradient id="m" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfe8d7"/><stop offset="1" stop-color="#e3f2e8"/></linearGradient>
+    <linearGradient id="w" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#cde9d6"/><stop offset="1" stop-color="#e9f6ee" stop-opacity="0"/></linearGradient>
+  </defs>
+  <g fill="url(#m)">
+    <!-- far minarets -->
+    <path d="M232 400V214h10v186zM228 214l9-30 9 30zM226 236h22v5h-22z"/>
+    <path d="M300 400V250h9v150zM296 250l8-26 8 26zM294 272h20v5h-20z"/>
+    <!-- tall minaret left -->
+    <path d="M36 400V150h18v250zM31 150l14-52 14 52zM28 196h34v8H28zM28 262h34v8H28zM44 86h2v14h-2z"/>
+    <path d="M45 78a7 7 0 1 0 5 12 6 6 0 1 1-5-12z"/>
+    <!-- tall minaret centre -->
+    <path d="M140 400V112h20v288zM135 112l15-58 15 58zM132 166h36v8h-36zM132 236h36v8h-36zM149 40h2v16h-2z"/>
+    <path d="M150 31a8 8 0 1 0 6 14 7 7 0 1 1-6-14z"/>
+    <!-- main hall + dome -->
+    <path d="M58 400V300h150v100z"/>
+    <path d="M66 302c0-46 26-74 67-86 41 12 67 40 67 86z"/>
+    <path d="M132 192h2v26h-2z"/><circle cx="133" cy="190" r="4"/>
+    <!-- side domes -->
+    <path d="M196 400v-62h70v62zM200 340c0-24 14-38 31-44 17 6 31 20 31 44z"/>
+    <path d="M10 400v-56h46v56zM12 346c0-18 10-28 21-32 11 4 21 14 21 32z"/>
+    <path d="M262 400v-44h60v44zM266 358c0-18 11-28 26-32 15 4 26 14 26 32z"/>
+  </g>
+  <!-- arched windows -->
+  <g fill="#f4faf6" opacity=".8"><path d="M86 400v-44a9 9 0 0 1 18 0v44zM124 400v-52a9 9 0 0 1 18 0v52zM162 400v-44a9 9 0 0 1 18 0v44z"/></g>
+  <!-- ground wave -->
+  <path d="M0 384c90-26 190-30 300-8s190 18 260-4v68H0z" fill="url(#w)"/>
+  <path d="M0 404c120-20 230-18 330 2s170 10 230-6v40H0z" fill="#d6eedd" opacity=".7"/>
+</svg>
